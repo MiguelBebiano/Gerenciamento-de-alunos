@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Controle de Acesso - Sala de Aula</title>
+    <meta name="description" content="Sistema de controle de acesso por reconhecimento facial para sala de aula" />
+    <link rel="stylesheet" href="/Gerenciamento_Alunos.css" />
+</head>
+
+<body>
+    <main class="container">
+        <header class="header">
+            <span class="badge">🛡️ MS - Manegement Student</span>
+            <h1>Controle de Acesso</h1>
+            <p class="subtitle">Sala de Aula — Reconhecimento Facial</p>
+        </header>
+
+        <section class="card">
+            <section class="video-area">
+                <video id="video" autoplay playsinline muted></video>
+                <section id="camera-off" class="camera-off">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="m2 2 20 20" />
+                        <path d="M17 17H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1" />
+                        <path d="M22 8v7" />
+                        <path d="M8 4h9a2 2 0 0 1 2 2v1" />
+                        <path d="m2 2 20 20" />
+                    </svg>
+                    <span>Câmera desligada</span>
+                </section>
+                <div id="scan-overlay" class="scan-overlay hidden"></div>
+            </section>
+
+            <div class="controls">
+                <button id="btn-camera" class="btn btn-primary" onclick="toggleCamera()">
+                    📷 Ligar Câmera
+                </button>
+
+                <div id="verify-section" class="verify-section hidden">
+                    <div class="input-row">
+                        <input type="text" id="input-name" placeholder="Digite o nome do aluno..."
+                            onkeydown="if(event.key==='Enter') verifyAccess()" />
+                        <button class="btn btn-success" onclick="verifyAccess()">
+                            🛡️ Verificar
+                        </button>
+                    </div>
+                    <p class="hint" id="hint"></p>
+                </div>
+            </div>
+        </section>
+
+        <div id="status" class="status hidden"></div>
+    </main>
+
+    <script src="/Gerenciamento_Alunos.js"></script>
+</body>
+
+</html>
